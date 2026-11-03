@@ -300,6 +300,7 @@ print("c++" < "python")  # True
 # ============================================================
 # 1.6 Modules
 # ============================================================
+
 import prog
 prog.getLotto()
 
@@ -307,4 +308,18 @@ def getLotto():
     import random
     lotto = random.sample(range(1, 36), 7)
     return lotto
+
+# ============================================================
+# 1.7 Modules
+# ============================================================
+
+print("A = {} and B = {}".format(1, 2))  # A = 1 and B = 2
+
+with open ("myfile.txt", "r") as f:
+    for line in f:
+        print(line)
+
+with open ("myfile.txt", "w") as f:
+    f.write("Hello, world!\n")
+    f.write("This is a test.\n")
 
