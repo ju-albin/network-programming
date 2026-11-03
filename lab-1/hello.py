@@ -181,3 +181,24 @@ def add_flea(animal):
 # ============================================================
 # 1.4.7 More on Defining Functions
 # ============================================================
+
+def print_all(*args):
+    for arg in args:
+        print(arg)
+
+## Lambda functions are small functions that can be defined on one line
+f = lambda a,b: a+b
+print (f(2,3)) # 5
+
+def hello():
+    """Prints 'Hello, world!'"""
+    print("Hello, world!")
+print(hello.__doc__)  # Prints the docstring of the function
+
+def greet():
+    """Returns a greeting string"""
+    return "Hello, world!"
+print(greet.__doc__)  # Prints the docstring of the function
+print(greet())  # Prints the return value of the function
+
+
