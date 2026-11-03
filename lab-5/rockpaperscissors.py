@@ -74,6 +74,7 @@ otherScore = 0
 
 if (ans == "S"):
     while myScore < 10 and otherScore < 10:
+        print(f"({myScore}, {otherScore}) Your move:")
         play = getMove()
         sock.send(play.encode())
         otherPlay = sock.recv(1024).decode("ASCII")
@@ -86,6 +87,7 @@ if (ans == "S"):
         print("The other player played: {}".format(otherPlay))
 else:
     while myScore < 10 and otherScore < 10:
+        print(f"({myScore}, {otherScore}) Your move:")
         otherPlay = sock.recv(1024).decode("ASCII")
         print("The other player played: {}".format(otherPlay))
         play = getMove()
@@ -101,3 +103,5 @@ if myScore == 10:
     print(f"You won {myScore} against {otherScore}")
 else:
     print(f"You lost with {myScore} against {otherScore}")
+
+sock.close()
