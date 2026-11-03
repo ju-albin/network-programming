@@ -212,6 +212,7 @@ print(greet())  # Prints the return value of the function
 # ============================================================
 # 1.5.1 More on Lists
 # ============================================================
+
 a = [1,2,3,1,1,1,5,7,2]
 a.count(1)  # 4
 
@@ -235,3 +236,43 @@ a = [0,1,2,3,4,5,6,7,8,9,10]
 powers = [2**x for x in a]
 print(powers)  # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
 
+# ============================================================
+# 1.5.2 Tuples
+# ============================================================
+
+t = (1111, 2222, 3333)
+
+t.count(1111)  # 1
+t.sort()  # Tuples do not have a sort method
+t.append(4444)  # Tuples do not have an append method
+t.pop()  # Tuples do not have a pop method
+
+x,y,z = t  # Unpacking a tuple (x=1111, y=2222, z=3333)
+
+# ============================================================
+# 1.5.3 Sets
+# ============================================================
+
+# Using a set makes the code shorter, cleaner and easier to read.
+if answ in {"yes", "yeah", "jop", "ok"}:
+    print("You answered yes")
+
+set("Hello")  # {'H', 'e', 'l', 'o'}
+
+mylist = [1, 2, 2, 3, 3, 3]
+set(mylist)  # {1, 2, 3}
+
+# ============================================================
+# 1.5.4 Looping Techniques
+# ============================================================
+
+myList = [1, 2, 3]
+for i in myList:
+    print(i)  # 1 2 3
+
+d = {
+    "name": "Albin",
+    "age": 26
+}
+for key,value in d.items():
+    print (key, value)  # name Albin age 26
