@@ -201,4 +201,11 @@ def greet():
 print(greet.__doc__)  # Prints the docstring of the function
 print(greet())  # Prints the return value of the function
 
+# ============================================================
+# 1.4.8 Intermezzo: Coding style
+# ============================================================
+
+# Python recommends using 4 spaces for indentation
+
+# Visual studio code uses spaces by defauult.
 
