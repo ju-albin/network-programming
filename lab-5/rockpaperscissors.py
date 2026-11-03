@@ -35,3 +35,21 @@ else:
     sock = clientsideGetPlaySocket(host)
 
 print("Connected to the other player. Let's play!")
+
+if (ans == "S"):
+    print("You are player 1 and will play first.")
+else:
+    print("You are player 2 and will play second.")
+
+if (ans == "S"):
+    while True:
+        play = input("Enter your play (R, P, S): ").upper()
+        sock.send(play.encode())
+        otherPlay = sock.recv(1024).decode("ASCII")
+        print("The other player played: {}".format(otherPlay))
+else:
+    while True:
+        otherPlay = sock.recv(1024).decode("ASCII")
+        print("The other player played: {}".format(otherPlay))
+        play = input("Enter your play (R, P, S): ").upper()
+        sock.send(play.encode())
