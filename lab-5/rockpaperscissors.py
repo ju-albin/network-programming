@@ -81,9 +81,9 @@ while myScore < POINTS_BEFORE_WIN and otherScore < POINTS_BEFORE_WIN:
 
     play = getMove()
 
-    sock.send(play.encode())
+    sock.sendall(play.encode())
 
-    otherPlay = sock.recv(1024).decode("ASCII")
+    otherPlay = sock.recv(1024).decode("ASCII").strip()
 
     print(f"(opponent's move: {otherPlay})")
 
