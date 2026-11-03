@@ -41,6 +41,14 @@ def printWinner(winner):
     else:
         print("You lose!")
 
+def getMove():
+    move = "?"
+
+    while move not in {"R", "P", "S"}:
+        move = input("Enter your play (R, P, S): ").upper()
+
+    return move
+
 ans = "?"
 
 while ans not in {"C", "S"}:
@@ -61,7 +69,7 @@ else:
 
 if (ans == "S"):
     while True:
-        play = input("Enter your play (R, P, S): ").upper()
+        play = getMove()
         sock.send(play.encode())
         otherPlay = sock.recv(1024).decode("ASCII")
         winner = getWinner(play, otherPlay)
@@ -71,7 +79,7 @@ else:
     while True:
         otherPlay = sock.recv(1024).decode("ASCII")
         print("The other player played: {}".format(otherPlay))
-        play = input("Enter your play (R, P, S): ").upper()
+        play = getMove()
         sock.send(play.encode())
         winner = getWinner(play, otherPlay)
         printWinner(winner)
