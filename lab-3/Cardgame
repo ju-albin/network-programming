@@ -1,3 +1,4 @@
+import random 
 class Card:
 
     def __init__(self, suit, value):
@@ -51,7 +52,7 @@ class CardDeck:
                 self._cards.append(card)
 
     def shuffle(self):
-        pass
+        random.shuffle(self._cards)
 
     def getCard(self):
         return self._cards.pop()
