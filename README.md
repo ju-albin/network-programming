@@ -2,7 +2,7 @@
 
 ## Status
 
-- [ ] Lab 01
+- [x] Lab 01
 - [ ] Lab 02
 - [ ] Lab 03
 - [ ] Lab 04
@@ -21,4 +21,4 @@
 
 ## Progress
 
-**Klart:** 0 / 16
+**Klart:** 1 / 16
