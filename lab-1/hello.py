@@ -209,3 +209,29 @@ print(greet())  # Prints the return value of the function
 
 # Visual studio code uses spaces by defauult.
 
+# ============================================================
+# 1.5.1 More on Lists
+# ============================================================
+a = [1,2,3,1,1,1,5,7,2]
+a.count(1)  # 4
+
+a.sort()  # Sorts the list in place
+print(a)  # [1, 1, 1, 1, 2, 2, 3, 5, 7]
+
+stack = [1,2,3,4]
+stack.append(8)  # Adds 8 to the end of the list
+stack.pop()  # Removes the last item in the list
+stack.pop()
+print(stack)  # [1, 2, 3]
+
+queue = [1,2,3,4]
+queue.append(8)  # Adds 8 to the end of the list
+queue.append(9)  # Adds 9 to the end of the list
+queue.pop(0)  # Removes the first item in the list
+queue.pop(0)  # Removes the first item in the list
+print(queue)  # [3, 4, 8, 9]
+
+a = [0,1,2,3,4,5,6,7,8,9,10]
+powers = [2**x for x in a]
+print(powers)  # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+
