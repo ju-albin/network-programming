@@ -20,3 +20,13 @@ while True:
                 s.sendAll(message.encode())
                 
     else:
+        data = sock.recv(2048)
+        if not data:
+            ip, port = sock.getpeername()
+            message = f"[{ip}:{port}] (disconnected)"
+            for s in listOfSockets:
+                if s != sockL and s != sock:
+                    s.sendAll(message.encode())
+            print(f"Connection from {sock.getpeername()} closed.")
+            listOfSockets.remove(sock)
+            sock.close()
