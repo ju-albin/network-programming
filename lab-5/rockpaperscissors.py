@@ -1,6 +1,6 @@
 import socket
 
-
+POINTS_BEFORE_WIN = 10
 PORT = 60003
 
 
@@ -54,6 +54,7 @@ def printWinner(winner):
         print("You lose!")
 
 
+
 ans = "?"
 
 while ans not in {"C", "S"}:
@@ -67,12 +68,14 @@ else:
 
 print("Connected to the other player. Let's play!")
 
+
+
+## Start with 0 points for both players
 myScore = 0
 otherScore = 0
 
 
-
-while myScore < 10 and otherScore < 10:
+while myScore < POINTS_BEFORE_WIN and otherScore < POINTS_BEFORE_WIN:
 
     print(f"({myScore},{otherScore}) Your move:")
 
@@ -95,7 +98,8 @@ while myScore < 10 and otherScore < 10:
 
 
 
-if myScore == 10:
+
+if myScore == POINTS_BEFORE_WIN:
     print(f"You won {myScore} against {otherScore}")
 else:
     print(f"You lost with {myScore} against {otherScore}")
