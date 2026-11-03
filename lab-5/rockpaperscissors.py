@@ -22,6 +22,24 @@ def clientsideGetPlaySocket(host):
 
     return client
 
+def getWinner(play, otherPlay):
+    if (play == otherPlay):
+        return 0
+
+    if ((play == "R" and otherPlay == "S") or 
+        (play == "S" and otherPlay == "P") or
+        (play == "P" and otherPlay == "R")):
+        return 1
+
+    return -1
+
+def printWinner(winner):
+    if (winner == 0):
+        print("It's a tie!")
+    elif (winner == 1):
+        print("You win!")
+    else:
+        print("You lose!")
 
 ans = "?"
 
@@ -46,6 +64,8 @@ if (ans == "S"):
         play = input("Enter your play (R, P, S): ").upper()
         sock.send(play.encode())
         otherPlay = sock.recv(1024).decode("ASCII")
+        winner = getWinner(play, otherPlay)
+        printWinner(winner)
         print("The other player played: {}".format(otherPlay))
 else:
     while True:
@@ -53,3 +73,6 @@ else:
         print("The other player played: {}".format(otherPlay))
         play = input("Enter your play (R, P, S): ").upper()
         sock.send(play.encode())
+        winner = getWinner(play, otherPlay)
+        printWinner(winner)
+
