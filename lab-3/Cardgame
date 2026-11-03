@@ -1,15 +1,50 @@
-import Random
-
 class Card:
+
+    def __init__(self, suit, value):
+        assert 1 <= suit <= 4 and 1 <= value <= 13
+
+        self._suit = suit
+        self._value = value
+
     def getValue(self):
         pass
 
     def getSuit(self):
         pass
 
+    def __str__(self):
+        pass
+
+
 class CardDeck:
+
     def __init__(self):
         pass
-    
-    def reset():
+
+    def shuffle(self):
         pass
+
+    def getCard(self):
+        pass
+
+    def size(self):
+        pass
+
+    def reset(self):
+        pass
+
+
+
+
+deck = CardDeck()
+
+deck.shuffle()
+
+while deck.size() > 0:
+    card = deck.getCard()
+    print(
+        "Card {} has value {}".format(
+            card,
+            card.getValue()
+        )
+    )
