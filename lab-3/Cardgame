@@ -44,7 +44,7 @@ class CardDeck:
 
     def __init__(self):
         self._cards = []
-        
+
         for suit in range(1, 5):
             for value in range(1, 14):
                 card = Card(suit, value)
@@ -54,10 +54,10 @@ class CardDeck:
         pass
 
     def getCard(self):
-        pass
+        return self._cards.pop()
 
     def size(self):
-        pass
+        return len(self._cards)
 
     def reset(self):
         pass
