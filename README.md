@@ -7,7 +7,7 @@
 - [x] Lab 03
 - [x] Lab 04
 - [x] Lab 05
-- [ ] Lab 06
+- [x] Lab 06
 - [ ] Lab 07
 - [ ] Lab 08
 - [ ] Lab 08A
