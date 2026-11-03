@@ -276,3 +276,35 @@ d = {
 }
 for key,value in d.items():
     print (key, value)  # name Albin age 26
+
+# ============================================================
+# 1.5.5 More on Conditions
+# ============================================================
+
+if (20 <= age <= 65):
+    print("Age is between 20 and 65")
+
+## Can you combine conditions using logical operators? Which operators are available in Python?
+# Can be combined and the operators are and, or, not
+
+# ============================================================
+# 1.5.6 Comparing sequences
+# ============================================================
+
+print((1, 2, 3) < (1, 3, 2))  # True
+print((2, 1, 3) < (1, 2, 3))  # False
+print((1, 2, 3) < (1, 2, 3, 4))  # True
+print((2, 2, 2) < (1, 1, 1, 1)) # False
+print("c++" < "python")  # True
+
+# ============================================================
+# 1.6 Modules
+# ============================================================
+import prog
+prog.getLotto()
+
+def getLotto():
+    import random
+    lotto = random.sample(range(1, 36), 7)
+    return lotto
+
