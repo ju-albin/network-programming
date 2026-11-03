@@ -67,20 +67,37 @@ if (ans == "S"):
 else:
     print("You are player 2 and will play second.")
 
+
+
+myScore = 0
+otherScore = 0
+
 if (ans == "S"):
-    while True:
+    while myScore < 10 and otherScore < 10:
         play = getMove()
         sock.send(play.encode())
         otherPlay = sock.recv(1024).decode("ASCII")
         winner = getWinner(play, otherPlay)
+        if winner == 1:
+            myScore += 1
+        elif winner == -1:
+            otherScore += 1
         printWinner(winner)
         print("The other player played: {}".format(otherPlay))
 else:
-    while True:
+    while myScore < 10 and otherScore < 10:
         otherPlay = sock.recv(1024).decode("ASCII")
         print("The other player played: {}".format(otherPlay))
         play = getMove()
         sock.send(play.encode())
         winner = getWinner(play, otherPlay)
+        if winner == 1:
+            myScore += 1
+        elif winner == -1:
+            otherScore += 1
         printWinner(winner)
 
+if myScore == 10:
+    print(f"You won {myScore} against {otherScore}")
+else:
+    print(f"You lost with {myScore} against {otherScore}")
