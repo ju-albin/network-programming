@@ -4,7 +4,7 @@
 
 - [x] Lab 01
 - [x] Lab 02
-- [ ] Lab 03
+- [x] Lab 03
 - [ ] Lab 04
 - [ ] Lab 05
 - [ ] Lab 06
@@ -21,4 +21,4 @@
 
 ## Progress
 
-**Klart:** 2 / 16
+**Klart:** 3 / 16
