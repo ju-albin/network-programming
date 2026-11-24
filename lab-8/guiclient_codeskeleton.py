@@ -189,11 +189,20 @@ def tryToConnect():
 # attempt to send the message (in the text field g_app.textIn) to the server
 def sendMessage(master):
 
-    # your code here
-    # a call to g_app.textIn.get() delivers the text field's content
-    # if a socket.error occurrs, you may want to disconnect, in order
-    # to put the program into a defined state
-    pass
+    if ((g_bConnected and g_sock is not None)):
+        msg = g_app.textIn.get()
+
+        if (msg):
+            try:
+                g_sock.sendall(msg.encode('UTF-8'))
+                g_app.textIn.delete(0, tk.END)
+            except socket.error as err:
+                printToMessages(f"Send failed: {err}")
+                disconnect()
+    else:
+        printToMessages("Not connected")
+
+
 
 
 # poll messages
