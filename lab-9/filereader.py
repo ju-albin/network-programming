@@ -1,5 +1,6 @@
 import math
-
+import random
+import zlib
 
 def textToByteArray(txt, encoding="ASCII"):
     try:
@@ -80,3 +81,21 @@ theCopy = byteArr.copy()
 random.shuffle(theCopy)
 
 print("Är orginalet oförändrat? ", byteArr != theCopy)
+
+# 9.2.4
+code = (zlib.compress(theCopy))
+
+print ("Compress lyckades? ", theCopy != code)
+
+bits_copy = len(code) * 8
+bits_per_symbol_copy = bits_copy / len(theCopy)
+print(f"theCopy komprimerad: {len(code)} bytes. {bits_copy} bitar. {bits_per_symbol_copy} bitar/symbol")
+
+orig_code = zlib.compress(byteArr)
+bits_orig = len(orig_code) * 8
+bits_per_symbol_orig = bits_orig / len(byteArr)
+print(f"byteArr komprimerad: {len(orig_code)} bytes. {bits_orig} bitar. {bits_per_symbol_orig} bitar/symbol")
+
+print(f"A. Datasource entropi: {h}. B. zlib of theCopy {bits_per_symbol_copy}. C. zlib of byteArr {bits_per_symbol_orig}")
+print(f"Max: {max(bits_per_symbol_copy, bits_per_symbol_orig, h)}")
+print(f"Min: {min(bits_per_symbol_copy, bits_per_symbol_orig, h)}")
