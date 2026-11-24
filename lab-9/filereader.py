@@ -74,3 +74,9 @@ min_bytes = (len(byteArr) * h) / 8 # Antal * bits per symbol / 8 (för att göra
 print("Entropi: ", h)
 print("Minsta teoretiska storlek: ", min_bytes) #
 
+
+# 9.2.3
+theCopy = byteArr.copy()
+random.shuffle(theCopy)
+
+print("Är orginalet oförändrat? ", byteArr != theCopy)
