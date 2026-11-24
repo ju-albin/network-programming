@@ -99,3 +99,25 @@ print(f"byteArr komprimerad: {len(orig_code)} bytes. {bits_orig} bitar. {bits_pe
 print(f"A. Datasource entropi: {h}. B. zlib of theCopy {bits_per_symbol_copy}. C. zlib of byteArr {bits_per_symbol_orig}")
 print(f"Max: {max(bits_per_symbol_copy, bits_per_symbol_orig, h)}")
 print(f"Min: {min(bits_per_symbol_copy, bits_per_symbol_orig, h)}")
+
+# 9.2.5
+t1 = """I hope this lab never ends because
+it is so incredibly thrilling!"""
+t10 = 10 * t1
+
+t1_bytes = bytearray(t1, "utf-8")
+t10_bytes = bytearray(t10, "utf-8")
+
+t1_compressed = zlib.compress(t1_bytes)
+t10_compressed = zlib.compress(t10_bytes)
+
+print(f"t1: {len(t1_bytes)} bytes -> komprimerad: {len(t1_compressed)} bytes")
+print(f"t10: {len(t10_bytes)} bytes -> komprimerad: {len(t10_compressed)} bytes")
+
+bits_t1_compressed = len(t1_compressed) * 8
+bits_per_symbol_t1_compressed = bits_t1_compressed / len(t1_bytes)
+print(f"t1: {bits_per_symbol_t1_compressed:.4f} bitar/symbol")
+
+bits_t10_compressed = len(t10_compressed) * 8
+bits_per_symbol_t10_compressed = bits_t10_compressed / len(t10_bytes)
+print(f"t10: {bits_per_symbol_t10_compressed:.4f} bitar/symbol")
