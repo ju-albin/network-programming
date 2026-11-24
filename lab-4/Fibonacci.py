@@ -3,9 +3,7 @@ def fibonacci(maxNumber):
     while a < maxNumber:
         yield a
         a,b = b, a+b
-
 def main(): 
-    for i in fibonacci(100):
+    for i in fibonacci(100000): 
         print(i)
-
 main()

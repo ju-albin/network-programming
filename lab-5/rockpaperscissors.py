@@ -1,6 +1,6 @@
 import socket
 
-POINTS_BEFORE_WIN = 10
+POINTS_BEFORE_WIN = 2
 PORT = 60003
 
 
