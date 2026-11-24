@@ -137,6 +137,8 @@ def disconnect():
     global g_sock
 
     g_bConnected = False
+    if g_sock:
+        g_sock.close()
     g_sock = None
 
     # once disconnected, set buttons text to 'connect'
@@ -145,14 +147,30 @@ def disconnect():
     
 # attempt to connect to server    
 def tryToConnect():
-    # we need to modify the following global variables
     global g_bConnected
     global g_sock
 
-    IP = "localhost"
-    PORT = g_app.ipPort.get()
+    try:
+        raw_addr = g_app.ipPort.get().strip()
+        ip, port_str = raw_addr.split(':')
+        port = int(port_str)
 
+        g_sock = socket.create_connection((ip, port), timeout=3.0)
+        g_sock.setblocking(False)
 
+        g_bConnected = True
+        g_app.connectButton['text'] = 'disconnect'
+        printToMessages(f"Connected to {ip}:{port}")
+
+    except (ValueError, IndexError):
+        printToMessages("Invalid IP:port format. Use e.g. localhost:60003")
+        g_bConnected = False
+        g_app.connectButton['text'] = 'connect'
+    except socket.error as err:
+        printToMessages(f"Connection failed: {err}")
+        g_sock = None
+        g_bConnected = False
+        g_app.connectButton['text'] = 'connect'
 
     if g_bConnected:
         g_app.connectButton['text'] = 'disconnect'
