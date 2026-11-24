@@ -42,7 +42,6 @@ with open("exempeltext.txt", "r", encoding="LATIN-1" ) as reader:
 
 
 # 9.2.2
-
 def makeHisto(byteArr):
     histo = [0] * 256
     for byte in byteArr:
@@ -65,8 +64,13 @@ def entropi(prob):
     h = 0.0
     for p in prob:
         if p > 0.0:
-            h += p * math.log(1.0 / p)
+            h += p * math.log2(1.0 / p)
     return h
 
-entropi = (entropi(prob))
-print(entropi)
+
+h = entropi(prob) # bits per symbol
+min_bytes = (len(byteArr) * h) / 8 # Antal * bits per symbol / 8 (för att göra om till byte)
+
+print("Entropi: ", h)
+print("Minsta teoretiska storlek: ", min_bytes) #
+
