@@ -48,7 +48,7 @@ while True:
         else:
             ip, port = sock.getpeername()
             
-            message = f"[{ip}:{port}] {data.decode('ASCII')}"
+            message = f"[{ip}:{port}] {data.decode('UTF-8')}"
             for s in listOfSockets:
                 if s != sockL:
                     s.sendall(message.encode())
