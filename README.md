@@ -11,10 +11,10 @@
 - [x] Lab 07
 - [x] Lab 08
 - [ ] Lab 08A
-- [ ] Lab 09
+- [x] Lab 09
 - [ ] Lab 09A
 - [ ] Lab 09B
-- [ ] Lab 10
+- [x] Lab 10
 - [ ] Lab 11
 - [ ] Lab 11A
 - [ ] Lab 12
