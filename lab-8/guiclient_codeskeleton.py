@@ -3,6 +3,7 @@ import tkinter as tk
 import tkinter.messagebox as tkmsgbox
 import tkinter.scrolledtext as tksctxt
 import socket
+from math import exp
 from os import MFD_ALLOW_SEALING
 
 
@@ -209,10 +210,26 @@ def sendMessage(master):
 def pollMessages():
     # reschedule the next polling event
     g_root.after(g_pollFreq, pollMessages)
-    
-    # your code here
-    # use the recv() function in non-blocking mode
-    # catch a socket.error exception, indicating that no data is available
+
+    if not g_bConnected or g_sock is None:
+        return
+
+    try:
+        data = g_sock.recv(4096)
+        if not data:
+            printToMessages("Server disconnected")
+            disconnect()
+            return
+        msg = data.decode('UTF-8')
+        if msg:
+            printToMessages(msg)
+    except BlockingIOError:
+        pass
+    except socket.error as err:
+        printToMessages(err)
+        disconnect()
+
+
 
 
 
