@@ -48,7 +48,11 @@ print(re.findall(r"\w*?\d", "abc123def456ghi"))
 mtxt = "jox r.nohre@jth.hj.se, bjox@se, adam@example.com, jox@jox@jox.com."
 
 print(re.findall(r"\w+@\w+", mtxt))
+
+# TASK 1
 print(re.findall(r"\w+(?:\.\w+)*@\w+(?:\.\w+)+", mtxt))
+
+# TASK 2
 print(re.findall(r"(?:^|[^@\w.])(\w+(?:\.\w+)*@\w+(?:\.\w+)+)(?![@\w.])", mtxt))
 
 # 10.4
@@ -61,3 +65,40 @@ bla bla bla.
 print(re.findall(r"<h1>\s*.*\s*</h1>", htmltxt))
 print(re.findall(r"<h1>\s*(.*)\s*</h1>", htmltxt))
 print(re.findall(r"<h1>\s*(.*?)\s*</h1>", htmltxt))
+
+# 10.5 The Simpsons
+f = open("tabla.html", encoding="utf-8")
+txt = f.read()
+
+print(re.findall(r'<td class="svtTablaTime">\s*(\d+\.\d+)\s*</td>', txt))
+
+print(re.findall(r'<td class="svtTablaTime">\s*(\d+\.\d+)\s*</td>\s*<td.*?>\s*<h4.*?>\s*Simpsons\s*</h4>', txt ))
+
+
+# TASK 3
+with open("tabla.html", encoding="utf-8") as f:
+    html = f.read()
+
+pattern = (
+    r'<h4[^>]*class="[^"]*svtTablaHeading[^"]*"[^>]*>\s*(Simpsons)\s*</h4>'
+    r'.*?'
+    r'<p[^>]*class="[^"]*svtXMargin-Bottom-10px[^"]*"[^>]*>\s*(.*?)\s*</p>'
+    r'.*?'
+    r'<td[^>]*class="[^"]*svtTablaTime[^"]*"[^>]*>\s*(.*?)\s*</td>'
+)
+
+matches = re.findall(pattern, html, flags=re.DOTALL) # Så att även \n räknas in i .
+
+print(matches)
+
+for title,desc,next_time in matches:
+    season_match = re.search(r"Säsong\s*(\d+)", desc)
+    episode_match = re.search(r"Del\s+\d+\s+av\s+\d+", desc)
+
+    season = season_match.group(0) if season_match else "Okänd säsong"
+    episode = episode_match.group(0) if episode_match else "Okänd del"
+
+    print("-------------------------------------")
+    print(f"Titel: {title} | Säsong: {season} | Avsnitt: {episode}")
+    print(f"Visningstid: {next_time}")
+    print(f"Beskrivning: {desc}")
